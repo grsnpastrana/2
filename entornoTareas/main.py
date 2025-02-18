@@ -56,3 +56,11 @@ def obtener_tarea(id: int):
         if tarea["id"] == id:
             return tarea
     raise HTTPException(status_code=404, detail="Tarea no encontrada")
+# Actualizar 
+@app.put("/tarea/{id}", tags=["Operaciones CRUD"])
+def actualizar_tarea(id: int, tarea_actualizada: dict):
+    for index, tarea in enumerate(tareas):
+        if tarea["id"] == id:
+            tareas[index].update(tarea_actualizada)
+            return {"mensaje": "Tarea actualizada correctamente", "tarea": tareas[index]}
+    raise HTTPException(status_code=404, detail="Tarea no encontrada")
