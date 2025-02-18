@@ -49,3 +49,10 @@ def crear_tarea(tarea: dict):
     tareas.append(tarea)
     return tarea
 
+# Obtener id
+@app.get("/tarea/{id}", tags=["Operaciones CRUD"])
+def obtener_tarea(id: int):
+    for tarea in tareas:
+        if tarea["id"] == id:
+            return tarea
+    raise HTTPException(status_code=404, detail="Tarea no encontrada")
