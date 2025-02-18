@@ -36,7 +36,7 @@ def home():
     return {"mensaje": "Bienvenido"}
 
 
-@app.get("/todasTareas", tags=["Operaciones CRUD"])
+@app.get("/todasTareas/", tags=["Operaciones CRUD"])
 def obtener_tareas():
     return {"Las tareas registradas son": tareas}
 
